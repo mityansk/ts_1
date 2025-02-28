@@ -1,8 +1,8 @@
-const { Post, User } = require('../db/models');
+const { Post } = require('../db/models');
 
 class PostService {
   static async getAll() {
-    return await Post.findAll({ include: { model: User } });
+    return await Post.findAll();
   }
 
   static async getById(id) {
@@ -18,10 +18,10 @@ class PostService {
     if (!post) return null;
     const updatedPost = await Post.update(updatedData, {
       where: { id },
-      returning: true
+      returning: true,
     });
-    console.log(updatedPost)
-    return updatedPost
+    console.log(updatedPost, '<<<<<<<<<<<<<<');
+    return updatedPost;
   }
 
   static async delete(id) {

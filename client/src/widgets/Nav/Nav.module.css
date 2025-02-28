@@ -1,0 +1,35 @@
+.nav {
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leftspan {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 30px;
+    width: 50%; /* Обеспечивает, чтобы левый блок занимал половину пространства */
+  }
+  
+  .rightspan {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 60px;
+    width: 50%; /* Обеспечивает, чтобы правый блок занимал оставшуюся половину */
+  }
+  
+  .nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .active {
+    color:cadetblue;
+  }
