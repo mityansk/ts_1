@@ -4,7 +4,7 @@ export type ResponseType<T> = {
     statusCode: number;
     error: string;
     message?: string;
-    data: T;
+    data: T | null;
 }
 
 export type PostWithUser<Z> = {

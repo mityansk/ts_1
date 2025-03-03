@@ -16,14 +16,10 @@ function PostsPage({ user }: PropsType): ReactElement {
   useEffect(() => {
     PostApi.getAll().then(({ error, data, message }: ResponseType<ArrayWithPosts>) => {
       if (error) alert(message);
+      if (!data) return alert('Постов нет, нечего показывать!')
       setPosts(data);
     });
-  }, []);
-
-  if (!user) {
-    return <div>Loading...</div>;
-  }
-
+  }, [setPosts]);
 
   return (
     <>

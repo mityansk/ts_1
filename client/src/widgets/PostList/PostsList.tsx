@@ -4,7 +4,7 @@ import { UserType } from '../../entities/user/user.types';
 import PostCard from '../PostCard/PostCard';
 
 type PropsType = {
-  user: UserType;
+  user: UserType | null;
   posts: ArrayWithPosts;
   setPosts: React.Dispatch<React.SetStateAction<ArrayWithPosts>>;
 }

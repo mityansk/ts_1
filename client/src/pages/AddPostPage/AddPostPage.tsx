@@ -1,19 +1,14 @@
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import PostApi from '../../entities/post/PostApi';
 import styles from './AddPostPage.module.css';
-import { UserType } from '../../entities/user/user.types';
-
-type PropsType = {
-  user: UserType;
-}
 
 type Inputs = {
   title: string;
   body: string;
 }
 
-function AddPostPage({ user }: PropsType): ReactElement {
+function AddPostPage() {
   const navigate = useNavigate();
 
     const INPUTS_INITIAL_DATA_VALUES= {
@@ -30,7 +25,7 @@ function AddPostPage({ user }: PropsType): ReactElement {
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const postData = { ...inputs, title: (inputs.title.trim() || 'Без темы'), authorId: user.id };
+    const postData = { ...inputs, title: (inputs.title.trim() || 'Без темы')};
 
     if (!inputs.body.trim()) {
       alert('Пост должен иметь содержание');

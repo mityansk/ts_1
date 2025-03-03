@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import AddPostPage from './pages/AddPostPage/AddPostPage';
 import PostsPage from './pages/PostsPage/PostsPage';
+import OnePostPage from './pages/OnePostPage/OnePostPage';
 
 function App(): ReactElement {
    
@@ -41,8 +42,8 @@ function App(): ReactElement {
             element={<RegistrationPage user={user} setUser={setUser} />}
           />
 
-          <Route path='/add' element={<AddPostPage user={user} />} />
-          {/* <Route path='/posts/:id' element={<OnePostPage user={user} />} /> */}
+          <Route path='/add' element={<AddPostPage />} />
+          <Route path='/posts/:id' element={<OnePostPage />} />
         </Route>
         <Route
           path='*'

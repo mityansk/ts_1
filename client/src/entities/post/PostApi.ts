@@ -1,11 +1,9 @@
 import { axiosInstance } from '../../shared/lib/axiosInstance';
-import { UserType } from '../user/user.types';
-import { Post, PostWithUser, ResponseType } from './post.types';
+import { Post, ResponseType } from './post.types';
 
 type CreateInputsType = {
   title: string;
   body: string;
-  authorId: number;
 }
 
 type UpdateInputsType = {
@@ -20,7 +18,7 @@ export default class PostApi {
     return data;
   }
 
-  static async getById(id: number): Promise<ResponseType<Post | null>> {
+  static async getById(id: number | string): Promise<ResponseType<Post | null>> {
     const { data } = await axiosInstance.get<ResponseType<Post | null>>(`/posts/${id}`);
     return data;
   }

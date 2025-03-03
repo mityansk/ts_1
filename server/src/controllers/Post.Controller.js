@@ -8,7 +8,7 @@ class PostController {
   static async getAllPosts(req, res) {
     try {
       const Posts = await PostService.getAll();
-
+      
       //! Проверка на длину списка задач (обработка негативного кейса)
       if (Posts.length === 0) {
         return res.status(204).json(formatResponse(204, 'No Posts found', []));
@@ -54,8 +54,9 @@ class PostController {
   }
 
   static async createPost(req, res) {
-    const { title, body, authorId } = req.body;
-
+    const { title, body } = req.body;
+    const user = res.locals.user;            
+    
     //! Проверка наличия необходимых данных - Используем PostValidator (обработка негативного кейса)
     const { isValid, error } = PostValidator.validate({ title, body });
     if (!isValid) {
@@ -66,7 +67,7 @@ class PostController {
 
     try {
       //? За запросы в БД отвечает сервис
-      const newPost = await PostService.create({ title, body, authorId });
+      const newPost = await PostService.create({ title, body, authorId: user.id });
 
       //! Проверка на существование новой задачи (обработка негативного кейса)
       if (!newPost) {
